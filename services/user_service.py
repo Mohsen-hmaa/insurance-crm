@@ -127,6 +127,56 @@ def get_user_by_id(user_id):
         )
     finally:
         db.close()
+def count_users():
+    db = SessionLocal()
+    try:
+        return db.query(User).count()
+    finally:
+        db.close()
+def create_initial_admin(full_name, username, password):
+    username = normalize_username(username)
+
+    if not full_name or not full_name.strip():
+        raise ValueError("نام و نام خانوادگی را وارد کنید.")
+
+    if not username:
+        raise ValueError("نام کاربری را وارد کنید.")
+
+    if not password:
+        raise ValueError("رمز عبور را وارد کنید.")
+
+    db = SessionLocal()
+    try:
+        if db.query(User).count() != 0:
+            raise PermissionError(
+                "حساب اولیه قبلاً ایجاد شده است."
+            )
+
+        existing_user = (
+            db.query(User)
+            .filter(func.lower(User.username) == username)
+            .first()
+        )
+        if existing_user:
+            raise ValueError("این نام کاربری قبلاً استفاده شده است.")
+
+        user = User(
+            full_name=full_name.strip(),
+            username=username,
+            password_hash=hash_password(password),
+            role=ROLES[0],
+            is_active=True,
+        )
+        db.add(user)
+        db.commit()
+        db.refresh(user)
+        return user
+
+    except Exception:
+        db.rollback()
+        raise
+    finally:
+        db.close()
 def create_user(
     full_name,
     username,
