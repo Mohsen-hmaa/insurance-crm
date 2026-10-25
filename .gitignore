@@ -1,0 +1,41 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*.pyd
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Build artifacts
+build/
+dist/
+
+# Real databases and backups
+*.db
+*.sqlite
+*.sqlite3
+
+# Private business data
+data/
+~$*.xlsx
+
+# Environment variables and secrets
+.env
+.env.*
+
+# Logs
+*.log
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local or non-public project files
+main-copy.py
+project_structure.txt
+InsuranceCRM.spec
+requirements_backup.txt
