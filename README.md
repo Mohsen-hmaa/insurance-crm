@@ -12,6 +12,17 @@ Insurance agencies often manage large volumes of customer records, insurance pol
 
 Insurance CRM brings key insurance workflows into one application, helping organize operational data and simplify routine tasks.
 
+## Application Screenshots
+
+### Dashboard
+![Insurance CRM Dashboard](screenshots/dashboard.png)
+
+### Insurance Policy Management
+![Insurance Policy List](screenshots/policies.png)
+
+### Commission Reporting
+![Commission Report](screenshots/commission-report.png)
+
 ## Key Features
 
 - **Customer Management:** Maintain and search insurance customer records.
